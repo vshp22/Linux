@@ -1,0 +1,18 @@
+#remove docker package 
+sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine -y
+#installing the yum utilities (installng tar, zip etc)
+sudo yum install -y yum-utils
+#adding a docker repo
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo -y
+#install the latest docker version
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+# starting the docker instance
+sudo systemctl start docker
+# enabling the docker instance 
+sudo systemctl enable docker
+#add a docker user
+sudo useradd docker
+#add a docker group
+sudo groupadd docker
+#provide 666 permission
+chmod 666 /var/run/docker.sock
