@@ -1,0 +1,30 @@
+#adding a group
+sudo groupadd vishnu
+
+#adding a single user
+sudo useradd vishnu
+
+#creating both together (we have toi create the group first for this to work)
+sudo useradd -m -d /home/vishnu -G vishnu vishnu 
+
+#list users (prints all the users)
+cat /etc/passwd
+
+cat /etc/passwd | awk -F: '{ print $1}'
+#for special characters use single quotes
+cat /etc/passwd | awk -F ':' '{ print $1}'
+cat /etc/passwd | cut -d: -f1 | wc
+cat /etc/passwd | cut -d ':' -f1 | wc
+
+#to find what users are logged in at the moment
+sudo users
+sudo su - 
+
+#further details about each user logged in
+who
+
+# to edit the users in the group - adds vishnu to vishnu1 group
+sudo usermod -aG vishnu1 vishnu
+
+#to check which groups the users are in and the user id and group id
+id vishnu
